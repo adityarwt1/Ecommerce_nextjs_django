@@ -1,4 +1,3 @@
-import React from "react";
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
@@ -9,21 +8,16 @@ export default function HomePage() {
             <div className="flex items-center">
               <h1 className="text-2xl font-bold text-blue-600">ShopEasy</h1>
             </div>
-            <nav className="hidden md:flex space-x-8">
-              <a href="/" className="text-blue-600 hover:text-blue-800">
-                Home
-              </a>
-              <a href="/products" className="text-blue-600 hover:text-blue-800">
-                Products
-              </a>
-              <a href="/about" className="text-blue-600 hover:text-blue-800">
-                About
-              </a>
-              <a href="/contact" className="text-blue-600 hover:text-blue-800">
-                Contact
-              </a>
-            </nav>
             <div className="flex items-center space-x-4">
+              <a href="/signin" className="text-blue-600 hover:text-blue-800">
+                Sign In
+              </a>
+              <a
+                href="/signup"
+                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              >
+                Sign Up
+              </a>
               <a href="/cart" className="text-blue-600 hover:text-blue-800">
                 Cart (0)
               </a>
