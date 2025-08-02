@@ -30,3 +30,16 @@ D:\july progress\ecommerce\server\obj\Debug\net10.0\refint\server.dll
 D:\july progress\ecommerce\server\obj\Debug\net10.0\server.pdb
 D:\july progress\ecommerce\server\obj\Debug\net10.0\server.genruntimeconfig.cache
 D:\july progress\ecommerce\server\obj\Debug\net10.0\ref\server.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\BCrypt.Net-Next.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\DnsClient.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\MongoDB.Bson.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\MongoDB.Driver.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\SharpCompress.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\Snappier.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+D:\july progress\ecommerce\server\bin\Debug\net10.0\ZstdSharp.dll
+D:\july progress\ecommerce\server\obj\Debug\net10.0\server.sourcelink.json

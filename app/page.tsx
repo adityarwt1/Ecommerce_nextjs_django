@@ -1,4 +1,5 @@
 export default function HomePage() {
+  console.log(process.env.BACKEND_URL)
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}

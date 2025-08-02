@@ -1,5 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Get the origin from environment variable
 var allowedOrigin = builder.Configuration["ALLOWED_ORIGIN"] ?? "http://localhost:3000";
 
@@ -51,6 +52,7 @@ app.MapGet("/", () =>
 });
 
 app.Run();
+
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
