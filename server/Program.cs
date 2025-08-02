@@ -1,6 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.AddControllers();
 // Get the origin from environment variable
 var allowedOrigin = builder.Configuration["ALLOWED_ORIGIN"] ?? "http://localhost:3000";
 
@@ -50,6 +50,7 @@ app.MapGet("/", () =>
 {
     return Results.Ok(new { message = "Helloo" });
 });
+
 
 app.Run();
 
