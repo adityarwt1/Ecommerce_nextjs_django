@@ -1,4 +1,26 @@
+"use client"
+import { useState } from "react";
+
 export default function SignUpPage() {
+  const [formdata , setFormdata] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+    phonenumber: "",
+    fitsttercondition: false,
+    secondcondition: false
+  });
+
+  const handleSubmit = async ()=>{
+    try {
+      const reponse  = await fetch("")
+      console.log(formdata)
+    } catch (error) {
+      console.log((error as Error).message)
+    }
+  }
   return (
     <div className="min-h-screen bg-white">
      
@@ -16,7 +38,7 @@ export default function SignUpPage() {
               </p>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-blue-900 font-medium mb-2">
@@ -25,8 +47,10 @@ export default function SignUpPage() {
                   <input
                     type="text"
                     required
-                    className="w-full border border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                    className="w-full border text-black border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                     placeholder="John"
+                    onChange={(e)=> setFormdata({...formdata, firstname: e.target.value})}
+
                   />
                 </div>
                 <div>
@@ -36,8 +60,9 @@ export default function SignUpPage() {
                   <input
                     type="text"
                     required
-                    className="w-full border border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                    className="w-full border border-blue-200 text-black rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                     placeholder="Doe"
+                    onChange={(e)=> setFormdata({...formdata, lastname: e.target.value})}
                   />
                 </div>
               </div>
@@ -49,8 +74,9 @@ export default function SignUpPage() {
                 <input
                   type="email"
                   required
-                  className="w-full border border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                  className="w-full border border-blue-200 rounded-lg px-4 py-3  text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   placeholder="Enter your email"
+                  onChange={(e)=> setFormdata({...formdata, email: e.target.value})}
                 />
               </div>
 
@@ -60,8 +86,9 @@ export default function SignUpPage() {
                 </label>
                 <input
                   type="tel"
-                  className="w-full border border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-                  placeholder="(555) 123-4567"
+                  className="w-full border text-black border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                  placeholder="1234567890"
+                  onChange={(e)=> setFormdata({...formdata, password: e.target.value})}
                 />
               </div>
 
@@ -72,8 +99,9 @@ export default function SignUpPage() {
                 <input
                   type="password"
                   required
-                  className="w-full border border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                  className="w-full border text-black border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   placeholder="Create a password"
+                  onChange={(e)=> setFormdata({...formdata, password: e.target.value})}
                 />
                 <p className="text-blue-600 text-sm mt-1">
                   Must be at least 8 characters long
@@ -87,8 +115,9 @@ export default function SignUpPage() {
                 <input
                   type="password"
                   required
-                  className="w-full border border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                  className="w-full border text-black border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   placeholder="Confirm your password"
+                  onChange={(e)=> setFormdata({...formdata, confirmpassword: e.target.value})}
                 />
               </div>
 
@@ -108,8 +137,9 @@ export default function SignUpPage() {
                     type="checkbox"
                     id="terms"
                     required
+                    onChange={(e)=> setFormdata({...formdata, fitsttercondition: true})}
                     className="w-4 h-4 text-blue-600 border-blue-300 rounded focus:ring-blue-500"
-                  />
+                    />
                   <label htmlFor="terms" className="ml-2 text-blue-700">
                     I agree to the{" "}
                     <a href="#" className="text-blue-600 hover:text-blue-800">
@@ -126,7 +156,7 @@ export default function SignUpPage() {
               <button
                 type="submit"
                 className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-              >
+                >
                 Create Account
               </button>
             </form>
