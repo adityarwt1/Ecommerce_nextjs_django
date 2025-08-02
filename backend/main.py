@@ -2,11 +2,19 @@ from flask import Flask, jsonify , request
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
+#mongo journey begin with django
+from flask_pymongo import PyMongo
+
+
 
 # Load environment variables from .env file
 load_dotenv()
 
 app = Flask(__name__)
+
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+
+mongo = PyMongo(app)
 
 # Read the allowed origin from env
 allowed_origin = os.getenv("ALLOWED_ORIGIN", "*")  # fallback to * if not set
