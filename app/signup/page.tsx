@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-export default function SignUpPage() {
+const  SignUpPage = ()=> {
   const router  = useRouter()
   const [formdata , setFormdata] = useState({
     firstname: "",
@@ -369,3 +369,4 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     </div>
   );
 }
+export default SignUpPage
