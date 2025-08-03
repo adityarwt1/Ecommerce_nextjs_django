@@ -41,14 +41,14 @@ def hello():
 @app.route("/signup", methods=["POST"])
 def create_user():
     body = request.get_json()
-
+    print(body)
     # Extracting the data from the body
     lastname = body.get("lastname")
     firstname = body.get("firstname")
     email = body.get("email")
     password = body.get("password")
     phonenumber = body.get("phonenumber")
-
+    
     check_exist = mongo.db.users.find_one({"email": email})
 
     #checnking the existing of the user before the saveing
@@ -56,6 +56,7 @@ def create_user():
         return jsonify({"error": "User already exitst"}), 409
     
     # Check for missing fields
+    print(firstname, lastname, email, password, phonenumber)
     if not all([firstname, lastname, email, password, phonenumber]):
         return jsonify({"error": "Missing fields"}), 400
 

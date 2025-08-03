@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function SignUpPage() {
   const [formdata , setFormdata] = useState({
@@ -12,15 +12,47 @@ export default function SignUpPage() {
     fitsttercondition: false,
     secondcondition: false
   });
+  const [error , setError] = useState("")
 
-  const handleSubmit = async ()=>{
-    try {
-      const reponse  = await fetch("")
-      console.log(formdata)
-    } catch (error) {
-      console.log((error as Error).message)
-    }
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault(); // ✅ Prevent page refresh
+
+  if (formdata.password !== formdata.confirmpassword) {
+    setError("Passwords do not match");
+    return;
   }
+
+  try {
+    const response = await fetch("http://localhost:5000/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // ✅ Fix typo: "Content-Yype" -> "Content-Type"
+      },
+      body: JSON.stringify({
+        firstname: formdata.firstname,
+        lastname: formdata.lastname,
+        email: formdata.email,
+        password: formdata.password,
+        phonenumber: formdata.phonenumber,
+      }),
+    });
+
+    const data = await response.json();
+
+    if(data.error){
+      setError(data.error)
+    }
+    if (!response.ok) {
+      setError(data.error || "Something went wrong");
+    } else {
+      setError(""); // Clear error on success
+      // Optional: Redirect or reset form
+    }
+  } catch (error) {
+    setError((error as Error).message);
+  }
+};
+
   return (
     <div className="min-h-screen bg-white">
      
@@ -37,6 +69,9 @@ export default function SignUpPage() {
                 Join ShopEasy and start shopping today
               </p>
             </div>
+            {error &&(
+              <div className="text-white p-4 bg-red-400 my-2 rounded-3xl">{error}</div>
+            )}
 
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -88,7 +123,7 @@ export default function SignUpPage() {
                   type="tel"
                   className="w-full border text-black border-blue-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   placeholder="1234567890"
-                  onChange={(e)=> setFormdata({...formdata, password: e.target.value})}
+                  onChange={(e)=> setFormdata({...formdata, phonenumber: e.target.value})}
                 />
               </div>
 
