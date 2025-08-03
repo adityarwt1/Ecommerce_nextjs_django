@@ -9,6 +9,10 @@ from flask_jwt_extended import (
     JWTManager, create_access_token,
     jwt_required, get_jwt_identity
 )
+
+#bcrypt js setup 
+
+import bcrypt
 # Load environment variables
 load_dotenv()
 
@@ -49,21 +53,24 @@ def create_user():
     if not all([firstname, lastname, email, password, phonenumber]):
         return jsonify({"error": "Missing fields"}), 400
 
+    #hashing the password for the trust
+    hashedPassword = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
     # Define your schema (as a dictionary)
     user_data = {
         "firstname": firstname,
         "lastname": lastname,
         "email": email,
-        "password": password,
+        "password": hashedPassword,
         "phonenumber": phonenumber
     }
-    
+
     # Insert the user into a collection called "users"
     result = mongo.db.users.insert_one(user_data)
 
     return jsonify({
         "message": "Signup successful",
-        "user_id": str(result.inserted_id)
+        "user_id": str(result)
     }), 201
 
 if __name__ == "__main__":
