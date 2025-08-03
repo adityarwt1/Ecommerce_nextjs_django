@@ -1,7 +1,9 @@
 "use client"
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 export default function SignUpPage() {
+  const router  = useRouter()
   const [formdata , setFormdata] = useState({
     firstname: "",
     lastname: "",
@@ -39,6 +41,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
     const data = await response.json();
 
+    if(response.ok){
+      router.push("/")      
+    }
     if(data.error){
       setError(data.error)
     }
